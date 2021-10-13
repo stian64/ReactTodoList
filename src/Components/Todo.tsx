@@ -8,7 +8,7 @@ function Todo() {
     
     const [tasks, setTasks] = useState<TodoItem[]>([
         {
-            title: "Grab some Pizza",
+            title: "Grab some Pizzas",
             completed: true
         },
         {
