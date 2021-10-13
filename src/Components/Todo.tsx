@@ -1,24 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CreateTask from './CreateTask';
+import Task from './Task';
+import TodoItem from '../Models/ToDoItem';
 import './Todo.css';
-
-export interface TodoItem {
-    completed: boolean;
-    title: string;
-}
-
-function Task({ task , index, completeTask}: { task: TodoItem, index: number, completeTask: any}) {
-    return (
-        <div
-            className="task"
-            style={{ textDecoration: task.completed ? "line-through" : "" }}
-        >
-            {task.title}
-            <button onClick={() =>  completeTask(index)}>Complete</button>
-        </div>
-    );
-}
-
 
 function Todo() {
     
@@ -37,6 +21,12 @@ function Todo() {
         }
     ]);
 
+    const [tasksRemaining, SetTasksRemaining] = useState(0);
+
+    useEffect(() => { 
+        SetTasksRemaining(tasks.filter(task => !task.completed).length) 
+    });
+
     const addTask = (title: string) => {
         const newTasks = [...tasks, { title, completed: false }];
         setTasks(newTasks);
@@ -48,14 +38,21 @@ function Todo() {
         setTasks(newTasks);
     };
 
+    const removeTask = (index: number) => {
+        const newTasks = [...tasks];
+        newTasks.splice(index, 1);
+        setTasks(newTasks);
+    };
+
     return (
         <div className="todo-container">
-            <div className="header">TODO - ITEMS</div>
+            <div className="header">Pending tasks ({ tasksRemaining })</div>
             <div className="tasks">
                 {tasks.map((task, index) => (
                     <Task
                         task={task}
                         index={index}
+                        removeTask={removeTask}
                         completeTask={completeTask}
                         key={index}
                     />
