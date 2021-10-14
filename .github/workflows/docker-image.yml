@@ -20,4 +20,4 @@ jobs:
       - name: Build the stack
         run: docker-compose up -d
       - name: Docker Push
-        run: docker push ${{secrets.DOCKER_USER}}/ReactTodoList
+        run: docker push ${{secrets.DOCKER_USER}}/reacttodolist
