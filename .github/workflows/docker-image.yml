@@ -9,9 +9,15 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
+      - name: docker login
+        env:
+          DOCKER_USER: ${{secrets.DOCKER_USER}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: Build the stack
         run: docker-compose up -d
-      - name: Test
-        run: docker run --network container:sample appropriate/curl -s --retry 10 --retry-connrefused http://localhost:5000/
+      - name: Docker Push
+        run: docker push ${{secrets.DOCKER_USER}}/ReactTodoList
