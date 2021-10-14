@@ -3,7 +3,7 @@ version: '3.7'
 services:
 
   sample:
-    container_name: stian64/reacttodolist
+    container_name: reacttodolist
     build:
       context: .
       dockerfile: Dockerfile
