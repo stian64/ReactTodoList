@@ -43,7 +43,7 @@ env:
   CONTAINER_NAME: image-workflow-1742576533010
   CLUSTER_NAME: StianK8Cluster
   CLUSTER_RESOURCE_GROUP: StianK8GroupNorth
-  CLUSTER_RESOURCE_TYPE: microsoft.containerservice/managedClusters
+  CLUSTER_RESOURCE_TYPE: Microsoft.ContainerService/managedClusters
   DEPLOYMENT_MANIFEST_PATH: ./manifests
   DOCKER_FILE: ./Dockerfile
   BUILD_CONTEXT_PATH: ./
