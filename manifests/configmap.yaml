@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tictactoe-config
+  namespace: namespace-workflow-1742576533010
+  labels:
+    app.kubernetes.io/name: tictactoe
+    kubernetes.azure.com/generator: devhub
+data:
