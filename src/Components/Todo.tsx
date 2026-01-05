@@ -32,23 +32,16 @@ function Todo() {
         setTasks(newTasks);
     };
 
-    const updateTaskAtIndex = (index: number, updater: (tasks: TodoItem[]) => TodoItem[]) => {
-        const newTasks = updater([...tasks]);
+    const completeTask = (index: number) => {
+        const newTasks = [...tasks];
+        newTasks[index].completed = true;
         setTasks(newTasks);
     };
 
-    const completeTask = (index: number) => {
-        updateTaskAtIndex(index, (tasks) => {
-            tasks[index].completed = true;
-            return tasks;
-        });
-    };
-
     const removeTask = (index: number) => {
-        updateTaskAtIndex(index, (tasks) => {
-            tasks.splice(index, 1);
-            return tasks;
-        });
+        const newTasks = [...tasks];
+        newTasks.splice(index, 1);
+        setTasks(newTasks);
     };
 
     return (
