@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import TodoItem from '../Models/ToDoItem';
 
-function Task({ task , index, completeTask, removeTask }: { task: TodoItem, index: number, completeTask: any, removeTask : any}) {
+interface TaskProps {
+    task: TodoItem;
+    index: number;
+    completeTask: (index: number) => void;
+    removeTask: (index: number) => void;
+}
+
+function Task({ task , index, completeTask, removeTask }: TaskProps) {
     return (
         <div
             className="task"

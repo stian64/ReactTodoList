@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-function CreateTask({ addTask} : { addTask: any}) {
+interface CreateTaskProps {
+    addTask: (title: string) => void;
+}
+
+function CreateTask({ addTask} : CreateTaskProps) {
 const [value, setValue] = useState("");
 
 const handleSubmit = (e: { preventDefault: () => void; }) => {
